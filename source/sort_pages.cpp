@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main_and_sort.h"
 
 void sort_interpace(int num) {
 
@@ -6,7 +6,7 @@ void sort_interpace(int num) {
 	{
 	case 0:
 		cls;
-		printf("½ÃÀÛÈ­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù....");
+		printf("ì‹œì‘í™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤....");
 		Sleep(1000);
 		start_main();
 	case 1:
@@ -19,61 +19,84 @@ void sort_interpace(int num) {
 		break;
 	case 3:
 		cls;
-		merge_sort();
+		insert_sort();
 		break;
+	case 4:
+		cls;
+		merge_sort();
 	default:
 		break;
 	}
 
 }
 
-//¼±ÅÃÁ¤·Ä È­¸é 
+//ì„ íƒì •ë ¬ í™”ë©´ 
 void select_sort(void) {
 	int backbuffer = 1;
-	printf("\n¼±ÅÃÁ¤·Ä¿¡ µé¾î¿Ô½À´Ï´Ù.\n");
-	//¼±ÅÃ ¾Ö´Ï¸ŞÀÌ¼Ç 
+	printf("\nì„ íƒì •ë ¬ì— ë“¤ì–´ì™”ìŠµë‹ˆë‹¤.\n");
+	//ì„ íƒ ì• ë‹ˆë©”ì´ì…˜ 
 	select_sort_animation();
 
-	printf("\n0À» ´©¸£¸é ÀÌÀüÈ­¸éÀ¸·Î µÇµ¹¾Æ°©´Ï´Ù.\n");
+	gotoxy(1, 60);
+	printf("\n0ì„ ëˆ„ë¥´ë©´ ì´ì „í™”ë©´ìœ¼ë¡œ ë˜ëŒì•„ê°‘ë‹ˆë‹¤.\n");
 	backbuffer = _getch();
 	if (backbuffer == '0') {
 		cls;
-		printf("½ÃÀÛÈ­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù....");
+		printf("ì‹œì‘í™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤....");
 		Sleep(1000);
 		start_main();
 	}
 }
 
-//¹öºíÁ¤·Ä È­¸é 
+//ë²„ë¸”ì •ë ¬ í™”ë©´ 
 void bubble_sort(void) {
 	int backbuffer = 1;
-	printf("¹öºíÁ¤·Ä¿¡ µé¾î¿Ô½À´Ï´Ù.");
-	//¹öºíÁ¤·Ä ¾Ö´Ï¸ŞÀÌ¼Ç 
+	printf("\në²„ë¸”ì •ë ¬ì— ë“¤ì–´ì™”ìŠµë‹ˆë‹¤.\n");
+	//ë²„ë¸”ì •ë ¬ ì• ë‹ˆë©”ì´ì…˜ 
 	bubble_sort_animation();
 
-	printf("\n0À» ´©¸£¸é ÀÌÀüÈ­¸éÀ¸·Î µÇµ¹¾Æ°©´Ï´Ù.\n");
+	printf("\n0ì„ ëˆ„ë¥´ë©´ ì´ì „í™”ë©´ìœ¼ë¡œ ë˜ëŒì•„ê°‘ë‹ˆë‹¤.\n");
 	backbuffer = _getch();
 	if (backbuffer == '0') {
 		cls;
-		printf("½ÃÀÛÈ­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù....");
+		printf("ì‹œì‘í™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤....");
 		Sleep(1000);
 		start_main();
 	}
 }
 
-//º´ÇÕÁ¤·Ä È­¸é 
+//ë³‘í•©ì •ë ¬ í™”ë©´ 
 void merge_sort(void) {
 	int backbuffer = 1;
-	//º´ÇÕÁ¤·Ä ¾Ö´Ï¸ŞÀÌ¼Ç
-	merge_sort_animation();
+	//ë³‘í•©ì •ë ¬ ì• ë‹ˆë©”ì´ì…˜
+	printf("\në³‘í•©ì •ë ¬ì— ë“¤ì–´ì™”ìŠµë‹ˆë‹¤.\n");
 
-	printf("\n0À» ´©¸£¸é ÀÌÀüÈ­¸éÀ¸·Î µÇµ¹¾Æ°©´Ï´Ù.\n");
+	int merge_arr[10] = { 5 , 4 , 2 , 3 , 1 , 6 , 8 , 9 , 7 , 0 };
+	merge_sort_animation(merge_arr , 10);
+
+	printf(" 0  1  2  3  4  5  6  7  8  9 ");
+	printf("\n0ì„ ëˆ„ë¥´ë©´ ì´ì „í™”ë©´ìœ¼ë¡œ ë˜ëŒì•„ê°‘ë‹ˆë‹¤.\n");
 	backbuffer = _getch();
 	if (backbuffer == '0') {
 		cls;
-		printf("½ÃÀÛÈ­¸éÀ¸·Î µ¹¾Æ°©´Ï´Ù....");
+		printf("ì‹œì‘í™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤....");
 		Sleep(1000);
 		start_main();
 	}
 }
 
+void insert_sort(void) {
+	int backbuffer = 1;
+	//ì‚½ì…ì •ë ¬ ì• ë‹ˆë©”ì´ì…˜
+	printf("\nì‚½ì…ì •ë ¬ì— ë“¤ì–´ì™”ìŠµë‹ˆë‹¤.\n");
+	insert_sort_animation();
+
+	printf("\n0ì„ ëˆ„ë¥´ë©´ ì´ì „í™”ë©´ìœ¼ë¡œ ë˜ëŒì•„ê°‘ë‹ˆë‹¤.\n");
+	backbuffer = _getch();
+	if (backbuffer == '0') {
+		cls;
+		printf("ì‹œì‘í™”ë©´ìœ¼ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤....");
+		Sleep(1000);
+		start_main();
+	}
+}
