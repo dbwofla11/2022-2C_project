@@ -1,37 +1,66 @@
-#include "main.h"
+#include "main_and_sort.h"
+
+enum ColorType_start {
+	BLACK = 0,  	//0
+	darkBLUE = 1,	//1
+	DarkGreen = 2,	 //2
+	darkSkyBlue = 3,    //3
+	DarkRed = 4,  	//4
+	DarkPurple = 5,	//5
+	DarkYellow = 6,	//6
+	GRAY = 7,		//7
+	DarkGray = 8,	//8
+	BLUE = 9,		//9
+	GREEN = 10,		//10
+	SkyBlue = 11,	//11
+	RED = 12,		//12
+	PURPLE = 13,		//13
+	YELLOW = 14,		//14
+	WHITE = 15		//15
+} COLOR;
 
 void start_main(void) {
 	int POS = 4;
 
-	CursorView(0);    //Ä¿¼­ÀÇ ±ôºıÀÓÀ» ¼û°ÜÁØ´Ù.
-	system("COLOR 0F");    //È­¸é ¹è°æÀ» °ËÁ¤, ±Û¾¾ »ö±òÀ» ÇÏ¾á»öÀ¸·Î ¼³Á¤ÇØ ÁØ´Ù.
+	CursorView(0);    //ì»¤ì„œì˜ ê¹œë¹¡ì„ì„ ìˆ¨ê²¨ì¤€ë‹¤.
+	system("COLOR 0F");    //í™”ë©´ ë°°ê²½ì„ ê²€ì •, ê¸€ì”¨ ìƒ‰ê¹”ì„ í•˜ì–€ìƒ‰ìœ¼ë¡œ ì„¤ì •í•´ ì¤€ë‹¤.
 	mainPtr();
 	while (true) {
 
 		POS = _getch();
-		// ±â´É ¼±ÅÃ 
+		// ê¸°ëŠ¥ ì„ íƒ 
 		switch (POS) {
-		case '0':
-			SetColor(11);
-			gotoxy(50, 7); printf("Á¤·Ä º¸±â");
-			SetColor(15);
-			gotoxy(50, 9); printf("Å½»ö º¸±â");
-			gotoxy(50, 11); printf("°ÔÀÓ  Á¾·á");
-			break;
 		case '1':
-			gotoxy(50, 7); printf("Á¤·Ä º¸±â");
-			SetColor(11);
-			gotoxy(50, 9); printf("Å½»ö º¸±â");
-			SetColor(15);
-			gotoxy(50, 11); printf("°ÔÀÓ  Á¾·á");
+			SetColor(SkyBlue); // 11ì€ íŒŒë‘ìƒ‰ 
+			gotoxy(52, 8); printf("ì •ë ¬ ");
+			SetColor(WHITE); // 15ëŠ” í•˜ì–‘
+			gotoxy(52, 10); printf("ìŠ¤íƒ ");
+			gotoxy(53, 12); printf("í ");
+			gotoxy(50, 19); printf("ê²Œì„ ì¢…ë£Œ");
 			break;
 		case '2':
-			gotoxy(50, 7); printf("Á¤·Ä º¸±â");
-			gotoxy(50, 9); printf("Å½»ö º¸±â");
-			SetColor(11);
-			gotoxy(50, 11); printf("°ÔÀÓ  Á¾·á");
-			SetColor(15);
+			gotoxy(52, 8); printf("ì •ë ¬ ");
+			SetColor(SkyBlue);
+			gotoxy(52, 10); printf("ìŠ¤íƒ ");
+			SetColor(WHITE);
+			gotoxy(53, 12); printf("í ");
+			gotoxy(50, 19); printf("ê²Œì„ ì¢…ë£Œ");
 			break;
+		case '3':
+			gotoxy(52, 8); printf("ì •ë ¬ ");
+			gotoxy(52, 10); printf("ìŠ¤íƒ ");
+			SetColor(SkyBlue);
+			gotoxy(53, 12); printf("í ");
+			SetColor(WHITE);
+			gotoxy(50, 19); printf("ê²Œì„ ì¢…ë£Œ");
+			break;
+		case '4':
+			gotoxy(52, 8); printf("ì •ë ¬ ");
+			gotoxy(52, 10); printf("ìŠ¤íƒ ");
+			gotoxy(53, 12); printf("í ");
+			SetColor(SkyBlue);
+			gotoxy(50, 19); printf("ê²Œì„ ì¢…ë£Œ");
+			SetColor(WHITE);
 		default: break;
 		}
 		Sleep(1500);
@@ -39,42 +68,73 @@ void start_main(void) {
 	}
 	cls;
 
-	if (POS == '0') {
-		puts("\nÁ¤·Ä º¸±â¸¦ ´­·¶½À´Ï´Ù.\n");
+	if (POS == '1') {
+		puts("\nì •ë ¬ ë³´ê¸°ë¥¼ ëˆŒë €ìŠµë‹ˆë‹¤.\n");
 
-		printf("1. ¼±ÅÃÁ¤·Ä\n");
-		printf("2. ¹öºíÁ¤·Ä\n\n");
-		printf("0. ½ÃÀÛÈ­¸éÀ¸·Î µ¹¾Æ°¡±â\n");
+		printf("1. ì„ íƒì •ë ¬\n");
+		printf("2. ë²„ë¸”ì •ë ¬\n");
+		printf("3. ì‚½ì…ì •ë ¬\n");
+		printf("4. ë³‘í•©ì •ë ¬\n\n");
+		printf("0. ì‹œì‘í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ê¸°\n");
+
 		int select = 0;
-		printf("\n±â´ÉÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä : ");
+		printf("\nê¸°ëŠ¥ì„ ì„ íƒí•´ ì£¼ì„¸ìš” : ");
 		scanf("%d", &select);
 
-		sort_interpace(select); // ¼±ÅÃÃ¢ ºÒ·¯¿À±â 
+		sort_interpace(select); // ì„ íƒì°½ ë¶ˆëŸ¬ì˜¤ê¸° 
 		Sleep(1500);
 	}
-	else if (POS == '1') puts("Å½»ö º¸±â¸¦ ´­·¶½À´Ï´Ù.");
+
+	else if (POS == '2') {
+		puts("ìŠ¤íƒ ë³´ê¸°ë¥¼ ëˆŒë €ìŠµë‹ˆë‹¤.\n");
+		stack_anima();
+	}
+
+	else if (POS == '3') {
+		puts("í ë³´ê¸°ë¥¼ ëˆŒë €ìŠµë‹ˆë‹¤.");
+		//qu_anima();
+	}
+
+	else if (POS == '4') {
+		puts("ì‹œìŠ¤í…œì„ ì¢…ë£Œí•©ë‹ˆë‹¤");
+		Sleep(5000);
+		exit(1);
+	}
 	pause;
 }
 
 void mainPtr(void) {
-	system("mode con: cols=106 lines=18");   //Âü°í·Î cols 2´ÜÀ§°¡ Æ¯¼ö¹®ÀÚ ¶Ç´Â ÇÑ±Û 1±ÛÀÚ´Ù.
-	system("title ¾Ë°í¸®Áò ½Ã°¢È­");
-	puts("\n¾Ë°í¸®Áò ½Ã°¢È­ ¸Å´º ¼±ÅÃ\n\n");
-	puts("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	puts("¡á                                                                                                      ¡á");
-	printf("¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á¡á");
-	gotoxy(50, 7); printf("Á¤·Ä º¸±â");
-	gotoxy(50, 9); printf("Å½»ö º¸±â");
-	gotoxy(50, 11); printf("°ÔÀÓ  Á¾·á");
+	system("mode con: cols=106 ");   //ì°¸ê³ ë¡œ cols 2ë‹¨ìœ„ê°€ íŠ¹ìˆ˜ë¬¸ì ë˜ëŠ” í•œê¸€ 1ê¸€ìë‹¤.
+	system("title ì•Œê³ ë¦¬ì¦˜ ì‚¬ì „");
+	gotoxy(38, 2); printf("<<  ì•Œê³ ë¦¬ì¦˜ ì‹œê°í™” ë§¤ë‰´ ì„ íƒ  >>");
+	puts("");
+	puts("");
+	puts("â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	puts("â–                                                                                                       â– ");
+	printf("â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– â– ");
+	gotoxy(52, 8); printf("ì •ë ¬ ");
+	gotoxy(52, 10); printf("ìŠ¤íƒ ");
+	gotoxy(53, 12); printf("í ");
+	gotoxy(50, 19); printf("ê²Œì„ ì¢…ë£Œ");
 	return;
 }
 
